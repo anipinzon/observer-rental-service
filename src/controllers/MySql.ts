@@ -1,22 +1,22 @@
 import { Observer } from "./interfaces";
 const { Sequelize } = require("sequelize");
-const sequelize = new Sequelize("books", "root", "pollo1107", {
-  host: "localhost",
-  dialect: "mysql",
-});
+
+
+// const sequelize = new Sequelize(mySql.db, mySql.usuario, mySql.contraseña, {
+//   host: mySql.host,
+//   dialect: "mysql",
+//   port: "3306",
+//   connectionLimit: 10,
+// });
 export class MySql implements Observer {
   public  update(id: string): void {
-    console.log(`SOY LA PERRA DE MYSQL Y TENGO EL ID ${id}`);
-
-    this.connecion()
-      .then(()=>{
-        console.log("suuu")
-      })
+    console.log(`SOY  MY SQL Y TENGO EL ID ${id}`);
   }
-   async connecion (){
-     try {
-      await sequelize.authenticate();
-      console.log("Connection has been established successfully.");
-    }
-  }
+  //  async connecion (){
+    
+  //     await sequelize.authenticate();
+  //     const users = await sequelize.query("SELECT * FROM `users`");
+  //     console.log(users);
+    
+  // }
 }

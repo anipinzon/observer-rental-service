@@ -10,6 +10,7 @@ class Server {
     this.routes()
   }
   routes(){
+    // Rutas que vengan a /api/reseva seran dirigidas hacia reservaRoutes
     this.app.use('/api/reseva' , reservaRoutes)
   }
   listen(){

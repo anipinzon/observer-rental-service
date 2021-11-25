@@ -20,6 +20,7 @@ class reservaPublisher implements Subject {
   }
 
   public notificar(): void {
+    console.log("notificando a mis suscriptores")
     for (const observer of this.observers) {
       observer.update(this.id);
     }
@@ -33,8 +34,12 @@ export const updateReserva = (req: Request, res: Response) => {
   const mySql = new MySql();
   subject.agregar(mySql);
 
+  subject.notificar();
+
   const mongoDB = new MongoDB();
   subject.agregar(mongoDB);
 
   subject.notificar();
+
+  res.send('Dato actualizado')
 };
