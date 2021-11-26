@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   mysql:
-    image: mysql:5
+    image: mysql
     environment:
       - MYSQL_DATABASE=my_store
       - MYSQL_ROOT_USERNAME=root
@@ -22,17 +22,15 @@ services:
       MONGO_INITDB_PASSWORD: superSecret
       MONGO_INITDB_DATABASE: bd-rental
           
-  reserva:
-    image: reserva:013
+  rental:
+    image: rental-service:0.0.1
     environment:
       - MYSQL_BD=my_store
       - MYSQL_USUARIO=root
       - MYSQL_CONTRASEÑA=admin123
       - MYSQL_PORT=8080
       - MYSQL_HOST=mysql
-      - MONGO_USUARIO=root
-      - MONGO_CONTRASEÑA=example
-      - MONGO_BD=bd-rental
+      - MONGODB_STRING_CONECTION=mongodb://root:example@mongodb:27017/admin
     ports:
       - 8080:8080
     networks:
