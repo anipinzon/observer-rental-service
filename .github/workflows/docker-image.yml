@@ -30,7 +30,7 @@ jobs:
         logout: true
     - name: Docker Push
       run: |
-        export VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        export VERSION: $(node -p "require('./package.json').version")
         docker build -t nicolasdockerbdb/observer-rental-service:$VERSION .
         docker tag nicolasdockerbdb/observer-rental-service:$VERSION nicolasdockerbdb/observer-rental-service:latest
         docker push nicolasdockerbdb/observer-rental-service:$VERSION
