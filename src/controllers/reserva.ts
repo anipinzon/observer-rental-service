@@ -28,18 +28,26 @@ class reservaPublisher implements Subject {
 }
 
 export const updateReserva = (req: Request, res: Response) => {
+  // Sacar el id de la peticion
   const { id } = req.params;
+  // Observer y mandarle el id
   const subject = new reservaPublisher(id);
 
+  // Instancia mySql
   const mySql = new MySql();
+  // Suscribo mysql a el observer
   subject.agregar(mySql);
 
-  subject.notificar();
+  // El observer notifica
 
+  // Instancia mongo
   const mongoDB = new MongoDB();
+  // Suscribo mongo a el observer
   subject.agregar(mongoDB);
 
+  // El observer notifica
   subject.notificar();
 
+  // Respondo la peticion
   res.send('Dato actualizado')
 };
